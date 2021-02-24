@@ -1,0 +1,8 @@
+.searchBarMainContainer{
+    width: 100%;
+    height: 6em;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
