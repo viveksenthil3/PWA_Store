@@ -45,6 +45,10 @@ app.get('/detailedView', (req, res)=>{
     res.render('detailedView')
 })
 
+app.get('/createPWA', (req, res)=>{
+  res.render('savePWA')
+})
+
 
 //Listen on the specified port
 app.listen(PORT, _=>{

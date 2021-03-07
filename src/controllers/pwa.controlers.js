@@ -16,7 +16,8 @@ cloudinary.config({
 
 
 exports.savePWA = async (req, res)=>{
-    
+    // res.status(400).redirect(req.headers.referer)
+    // return
     const {
         username,
         PWAName,
