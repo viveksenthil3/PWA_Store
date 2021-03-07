@@ -1,0 +1,14 @@
+.savePWARootContainer{
+    padding: 3em 6em 0 6em;
+    overflow-y: auto;
+}
+
+.savePWAUnderline{
+    height: .2em;
+    width: 16em;
+    background-color: #2196f3;
+}
+
+.savePWAInput{
+    margin: 2em 0;
+}

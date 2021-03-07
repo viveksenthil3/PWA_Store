@@ -20,7 +20,9 @@ npm start
  npm install -g nodemon
  ```
 
- Command to run server in debugger mode
+
+ Command to run the server in debugger mode
+
 
  ```javascript
  npm run dev

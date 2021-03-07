@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="/static/css/savePWA.css">
+
+<div class="savePWARootContainer">
+    <h4>Add New PWA</h2>
+    <div class="savePWAUnderline"></div>
+    
+    <div class="row">
+        <form class="savePWAInput col s42" method="POST" action="/savePWA" enctype="multipart/form-data">
+          <div class="row">
+            <input name="username" value="vivek" hidden/>
+
+            <div class="input-field savePWAInput col s4 offset-s4 pull-s3">
+              <input  name="PWAName" value="test 2" type="text" class="validate" required>
+              <label >PWA Name</label>
+            </div>
+
+            <div class="input-field savePWAInput col s4 offset-s4 pull-s3">
+                <select name="category" required>
+                    <option value="" disabled >Choose your option</option>
+                    <option value="food"selected>Food</option>
+                    <option value="education">Education</option>
+                    <option value="sports">Sports</option>
+                </select>
+                <label>Category</label>
+            </div>
+
+            <div class="input-field savePWAInput col s4 offset-s4 pull-s3">
+                <textarea name="description" value="hi" class="materialize-textarea"></textarea>
+              <label >Description</label>
+            </div>
+
+            <div class="input-field savePWAInput col s4 offset-s4 pull-s3">
+                <input name="link" value="hello" type="text" class="validate" required>
+                <label >PWA Link</label>
+              </div>
+
+              <div class="file-field input-field savePWAInput col s4 offset-s4 pull-s3">
+                <div class="btn blue">
+                    <span>Logo</span>
+                    <input name="logo" type="file">
+                </div>
+                  <div class="file-path-wrapper">
+                  <input class="file-path validate" required type="text" placeholder="Upload a Logo for your PWA">
+                </div>
+              </div>
+
+              <div class="file-field input-field savePWAInput col s4 offset-s4 pull-s3">
+                <div class="btn blue">
+                    <span>Sample Pics</span>
+                    <input name="samplePics" type="file" multiple>
+                </div>
+                  <div class="file-path-wrapper">
+                  <input class="file-path validate" required type="text" placeholder="Upload one or more Sample pics">
+                </div>
+              </div>
+
+          </div>
+         
+          <div class="input-field savePWAInput col s4 offset-s4 ">
+            <input class="btn green" type="submit" value="Add PWA"/>
+        </div>
+        </form>
+      </div>
+</div>
+
+<script>
+     document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {});
+  });
+  
+</script>
