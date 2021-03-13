@@ -37,9 +37,9 @@ const pwaRoutes = require('./src/routes/pwa.routes')
 app.use('/', pwaRoutes);
 
 //Routes
-app.get('/', (req, res)=>{
-    res.render('home')
-})
+// app.get('/', (req, res)=>{
+//     res.render('home')
+// })
 
 app.get('/detailedView', (req, res)=>{
     res.render('detailedView')

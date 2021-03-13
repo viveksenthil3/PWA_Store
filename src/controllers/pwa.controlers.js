@@ -156,3 +156,36 @@ const uploadFilesToCloud =req=>{
         });
     })
 }
+
+
+exports.homePage= async (req, res)=>{
+
+    try{
+        const pwas = await PWA.aggregate([
+            {
+              '$group': {
+                '_id': '$category', 
+                'pwas': {
+                  '$push': '$$ROOT'
+                }
+              }
+            }, {
+              '$project': {
+                'pwas': {
+                  '$slice': [
+                    '$pwas', 5
+                  ]
+                }
+              }
+            }
+          ]);
+    
+    
+        res.render('home', {pwas})
+    }
+    catch(error){
+        res.status(400).json({error});
+        return;
+    }
+    
+}
