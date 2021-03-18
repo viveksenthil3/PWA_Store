@@ -177,6 +177,12 @@ exports.homePage= async (req, res)=>{
                   ]
                 }
               }
+
+            }, {
+                '$sort' :{
+                    '_id':1
+                }
+
             }
           ]);
     
@@ -188,4 +194,32 @@ exports.homePage= async (req, res)=>{
         return;
     }
     
+
+}
+
+
+exports.getPWAs = async (req, res)=>{
+    const {
+        PWAName
+    }= req.body
+
+    if(!PWAName){
+        res.json({
+            pwas:[]
+        });
+
+        return;
+    }
+
+    try{
+        const pwas = await PWA.find({ PWAName: {$regex: PWAName , $options: "i"} }).limit(5);
+    
+    
+        res.json({pwas})
+    }
+    catch(error){
+        res.status(400).json({error});
+        return;
+    }
+
 }
