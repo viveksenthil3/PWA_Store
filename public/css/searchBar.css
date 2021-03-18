@@ -6,3 +6,121 @@
     justify-content: center;
     align-items: center;
 }
+
+.searchBarLeftContainer{
+    position: relative;
+
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.searchBarLeftContainer input{
+    width: 100%;
+    height: 2.5em;
+    border: solid rgb(0,0,0,.2) 1px;
+    border-radius: .5em;
+    padding: 0 1em;
+
+}
+
+.searchBarLeftContainerActive{
+    z-index: 20;
+    border: none !important;
+    border-end-end-radius: 0 !important;
+    border-end-start-radius: 0 !important;
+}
+
+.searchBarLeftContainer input:focus{
+    outline: none ;
+}
+
+.searchBarRightContainer{
+    position: absolute;    
+    top: 1.5em;
+    right: 3.5em;
+    cursor: pointer;
+}
+
+.searchBarRightContainer i{
+    font-size: 2em;
+}
+
+.pwaSuggestionsListOuterContainer{
+    position: absolute;
+    top: 0;
+    left:0;
+
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(0,0,0,.2);
+    
+    /* display: none; */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.pwaSuggestionsListContainer{
+    position: absolute;
+    top:100%;
+    background-color: white;
+    width: 100%;
+    height: fit-content;
+    border-radius: 0 0 .5em .5em;
+
+    display: flex;
+    flex-direction: column;
+    z-index: 20;
+    
+    /* display: none; */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .4s;
+}
+
+.pwaSuggestion{
+    display: flex;
+    padding: .6em 1em;
+    border-bottom: solid rgb(0,0,0,0.1) 1px;
+    cursor: pointer;
+    color: rgb(0,0,0,0.6);
+    font-weight: 500;
+}
+
+.pwaSuggestion:hover{
+    background-color: rgb(0,0,0,.1);
+}
+
+.pwaSuggestionLogo{
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: .3em;
+    overflow: hidden;
+
+}
+
+.pwaSuggestionLogo img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.pwaSuggestionName{
+    flex: 1;
+    display: flex;
+    font-size: 16px;    
+    align-items: center;
+    padding: 0 .8em;
+}
+
+.activateSearch{
+    visibility: visible;
+    opacity: 1;
+}
+
+.queryPart{
+    font-weight: bold;
+    color: black;
+}
