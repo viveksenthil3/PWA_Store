@@ -41,9 +41,9 @@ app.use('/', pwaRoutes);
 //     res.render('home')
 // })
 
-app.get('/detailedView', (req, res)=>{
-    res.render('detailedView')
-})
+// app.get('/detailedView', (req, res)=>{
+//     res.render('detailedView')
+// })
 
 app.get('/createPWA', (req, res)=>{
   res.render('savePWA')

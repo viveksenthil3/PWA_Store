@@ -220,3 +220,56 @@ exports.getPWAs = async (req, res)=>{
     }
 
 }
+
+
+
+exports.detailedView = async (req, res)=>{
+    const {
+        PWAId
+    }= req.query
+
+    if(!PWAId){
+        res.redirect('/');
+        return;
+    }
+
+    try{
+        const pwa = await PWA.findOne({ _id: PWAId});
+    
+    
+        res.render('detailedView',{pwa})
+    }
+    catch(error){
+        res.redirect('/');
+        return;
+    }
+
+}
+
+
+
+exports.deletePWA = async (req, res)=>{
+    const {
+        PWAId
+    }= req.body
+
+    if(!PWAId){
+        res.status(409).json({
+            message: 'Insufficient details'
+        });
+
+        return;
+    }
+
+    try{
+        const pwa = await PWA.findOne({ _id: PWAId});
+    
+    
+        res.json({pwa})
+    }
+    catch(error){
+        res.status(400).json({error});
+        return;
+    }
+
+}

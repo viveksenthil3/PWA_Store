@@ -1,1 +1,32 @@
-<h1>Detailed View Page</h1>
+<link rel="stylesheet" href="/static/css/detailedView.css">
+
+<div class="detailedViewRoot">
+    <div class="firstRow">
+        <div class="detailedViewLogo"><img src="<%= pwa.logo.url %>" alt="Logo"></div>
+        <div class="detailedViewNameAndReview">
+            <a href="<%= pwa.link%>">
+                <h3 class="pwaTitle"><%= pwa.PWAName %></h3>
+            </a>
+        </div>
+    </div>
+
+    <div class="descriptionRoot">
+        <h4 class="descriptionTitle">Description</h4>
+        <p class="description"><%= pwa.description %></p>
+    </div>
+
+    <div class="samplePicsRoot">
+        <h4 class="samplePicsTitle">Sample Pics</h4>
+        <div class="samplePics">
+            <% pwa.samplePics.forEach(pic=>{%>
+                <img src="<%=pic.url%>" alt="sample pic">
+            <%})%>
+            <% pwa.samplePics.forEach(pic=>{%>
+                <img src="<%=pic.url%>" alt="sample pic">
+            <%})%>
+            <% pwa.samplePics.forEach(pic=>{%>
+                <img src="<%=pic.url%>" alt="sample pic">
+            <%})%>
+        </div>
+    </div>
+</div>
