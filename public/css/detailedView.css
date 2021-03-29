@@ -1,0 +1,72 @@
+a{
+    color: black;
+}
+
+.detailedViewRoot{
+    display: flex;
+    flex-direction: column;
+    padding: 2em 0 0 8em;
+    overflow-y: scroll;
+}
+
+
+.firstRow{
+    display: flex;
+    margin: 1em 0;
+}
+
+.detailedViewLogo{
+    fle:1;
+    width: 12em;
+    height: 12em;
+    border-radius: .4em;
+    overflow: hidden;
+
+    box-shadow: 15px 15px 20px rgb(0,0,0,0.2);
+}
+
+.detailedViewLogo img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.detailedViewNameAndReview{
+    margin: 0 0 0 5em;
+}
+
+.detailedViewNameAndReview h3{
+    margin: .2em 0;
+}
+
+.descriptionRoot{
+    width: 30em;
+    margin: 1em 0 1em 0;
+}
+
+.description{
+    color: rgb(0,0,0,0.5);
+    font-size: 18px;
+}
+
+.samplePicsRoot{
+    margin: 1em 0 1em 0;
+}
+
+.samplePics{
+    width: 60em;
+    max-height: 22em;
+    overflow-y: auto;
+    display: flex;
+}
+
+.samplePics img{
+    width: 12.5em;
+    height: 18em;
+    border-radius: .2em;
+    object-fit: cover;
+    margin: 1em 1.2em;
+    display: inline-block;
+
+    box-shadow: 15px 15px 10px rgb(0,0,0,0.2);
+}
