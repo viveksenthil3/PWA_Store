@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/login.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+     <% if(error=='email cannot be empty'){ %>
+        
+        <script>M.toast({html:'<%=error%>'})
+       
+        </script>
+        
+        
+    <%}%> 
+    <h5 id="t"> dd</h5>
+    <div class="row custom-margin ">
+        <form class="col s4 " action="/register" method="POST">
+            <div class="row ">
+                <div class="input-field ">
+                    <input type="text" name="firstname" id="firstname" class="" value="<%=details.fn%>" >
+                    <label for="username">First Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field">
+                    <input type="text" name="lastname" id="lastname"class="" value="<%=details.ln%>" >
+                    <label for="username">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field ">
+                    <input type="email" name="email" id="email" class="" value="<%=details.email%>" >
+                    <label for="username">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field ">
+                    <input type="password" name="password" id="password" class=""  >
+                    <label for="username">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field ">
+                    <input type="password" name="conpassword" id="conpassword" class=""  >
+                    <label for="username">Confirm Password</label>
+                </div>
+            </div>
+            <div class="row custom-reg-button-pad">
+                <button class= "waves-effect waves-light btn"style="background-color:#00acee" type="submit">Register</button>
+            </div>
+            <div class="row custom-reg-button-pad">               
+                <a href="login" style="color: gray;">Go to login</a>              
+            </div>
+        </form>
+    </div>
+    <%if(details.fn==''){%>
+    <script>
+       
+        document.getElementById("firstname").classList.add("custom-error-input");
+    </script>
+    <%}%
+
+</body>
+
+</html>

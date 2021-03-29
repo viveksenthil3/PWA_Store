@@ -1,5 +1,5 @@
 const mongoos = require('mongoose')
-
+const bcrypt=require('bcrypt')
 
 const pwaSchema = new mongoos.Schema({
     username: {
@@ -37,3 +37,4 @@ const pwaSchema = new mongoos.Schema({
 }, { timestamps: true })
 
 module.exports = mongoos.model('pwa', pwaSchema);
+
