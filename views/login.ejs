@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/login.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    <!-- <% if(error!=''){ %>
+        
+        <script>M.toast({html:'<%=error%>'})</script>
+        
+    <%}%>    -->
+    <div class="row custom-margin">
+        <form class="col s4 " action="/login" method="post">
+            <div class="row">
+                <div class="input-field">
+                    <input type="email" name="email" id="email" required>
+                    <label for="email">Email</label>
+                </div> 
+            </div>
+            <div class="row">
+                <div class="input-field">
+                    <input type="password" name="password" id="password" required>
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="row custom-reg-button-pad">
+                <button class= "waves-effect waves-light btn"style="background-color:#00acee" type="submit">Login</button>
+            </div>
+            <div class="row custom-reg-button-pad">
+               <p style="color: gray;">Not registered? <a href="register" style="color: #00acee;">Create an account</a></p> 
+            </div>
+            
+        </form>
+
+    </div>
+    
+</body>
+</html>

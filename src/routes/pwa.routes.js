@@ -38,4 +38,6 @@ router.get('/detailedView', detailedView);
 
 router.get('/', homePage);
 
+
+
 module.exports = router;
