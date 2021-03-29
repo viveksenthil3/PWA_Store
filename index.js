@@ -73,6 +73,7 @@ const{isValidLogin}=require('./src/middlewares/auth.middlewares');
 
 //Routes
 
+
 app.get('/', isValidLogin,(req, res)=>{
    
   res.render('home')
@@ -80,9 +81,10 @@ app.get('/', isValidLogin,(req, res)=>{
   
 })
 
-app.get('/detailedView', (req, res)=>{
-    res.render('detailedView')
-})
+
+// app.get('/detailedView', (req, res)=>{
+//     res.render('detailedView')
+// })
 
 app.get('/createPWA', (req, res)=>{
   res.render('savePWA')

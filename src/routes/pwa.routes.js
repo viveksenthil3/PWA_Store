@@ -1,5 +1,7 @@
 const express = require('express');
-const { savePWA } = require('../controllers/pwa.controlers');
+
+const { savePWA, homePage, getPWAs, detailedView } = require('../controllers/pwa.controlers');
+
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
 
@@ -28,8 +30,13 @@ const pwaImgStorage = multer.diskStorage({
   const upload = multer({ storage: pwaImgStorage }).fields([{ name: 'logo', maxCount: 1 }, { name: 'samplePics', maxCount: 8 }])
 
 
-router.post('/savePWA', upload, savePWA)
+router.post('/savePWA', upload, savePWA);
 
+router.post('/getPWAs', getPWAs);
+
+router.get('/detailedView', detailedView);
+
+router.get('/', homePage);
 
 
 

@@ -1,129 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/static/css/home.css">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</head>
-
-<body>
+<link rel="stylesheet" href="/static/css/home.css">
 
 
-    <div class="home_main_container">
-        <div class="home_card_category">
-            <a href="" class="cat_item1"><p style="font-size: 24px;">Entertainment</p></a>
-            <a href=""class="cat_item2"><p style="font-size: 24px;">>></p></a>
-        </div>
-        <div class="home_card_group">
-            <div class="home_card">
-                <div class="home_card_item1">
-                    <img src="/static/image/wp4625805-spider-man-sad-wallpapers.jpg" alt="hello" width="100%"
-                        height="100%">
-                </div>
-                <div class="home_card_item2">
-                    <p style="font-size:18px ;">hell02</p>
-                </div>
-            </div>
-            <div class="home_card">
-                <div class="home_card_item1">
-                    <img src="/static/image/wp4625805-spider-man-sad-wallpapers.jpg" alt="hello" width="100%"
-                        height="100%">
-                </div>
-                <div class="home_card_item2">
-                    <p style="font-size:18px ;">hell02</p>
-                </div>
-            </div>
-            <div class="home_card">
-                <div class="home_card_item1">
-                    <img src="/static/image/wp4625805-spider-man-sad-wallpapers.jpg" alt="hello" width="100%"
-                        height="100%">
-                </div>
-                <div class="home_card_item2">
-                    <p style="font-size:18px ;">hell02</p>
-                </div>
-            </div>
-            <div class="home_card">
-                <div class="home_card_item1">
-                    <img src="/static/image/wp4625805-spider-man-sad-wallpapers.jpg" alt="hello" width="100%"
-                        height="100%">
-                </div>
-                <div class="home_card_item2">
-                    <p style="font-size:18px ;">hell02</p>
-                </div>
-            </div>
-            <div class="home_card">
-                <div class="home_card_item1">
-                    <img src="/static/image/wp4625805-spider-man-sad-wallpapers.jpg" alt="hello" width="100%"
-                        height="100%">
-                </div>
-                <div class="home_card_item2">
-                    <p style="font-size:18px ;">hell02</p>
-                </div>
-            </div>
-           
-        </div>
 
-        <div class="home_card_category">
-            <a href="" class="cat_item1"><p style="font-size: 24px;">Entertainment</p></a>
-            <a href=""class="cat_item2"><p style="font-size: 24px;">>></p></a>
-        </div>
-        <div class="home_card_group">
-            <div class="home_card">
-                <div class="home_card_item1">
-                    <img src="/static/image/wp4625805-spider-man-sad-wallpapers.jpg" alt="hello" width="100%"
-                        height="100%">
-                </div>
-                <div class="home_card_item2">
-                    <p style="font-size:18px ;">hell02</p>
-                </div>
-            </div>
-            <div class="home_card">
-                <div class="home_card_item1">
-                    <img src="/static/image/wp4625805-spider-man-sad-wallpapers.jpg" alt="hello" width="100%"
-                        height="100%">
-                </div>
-                <div class="home_card_item2">
-                    <p style="font-size:18px ;">hell02</p>
-                </div>
-            </div>
-            <div class="home_card">
-                <div class="home_card_item1">
-                    <img src="/static/image/wp4625805-spider-man-sad-wallpapers.jpg" alt="hello" width="100%"
-                        height="100%">
-                </div>
-                <div class="home_card_item2">
-                    <p style="font-size:18px ;">hell02</p>
-                </div>
-            </div>
-            <div class="home_card">
-                <div class="home_card_item1">
-                    <img src="/static/image/wp4625805-spider-man-sad-wallpapers.jpg" alt="hello" width="100%"
-                        height="100%">
-                </div>
-                <div class="home_card_item2">
-                    <p style="font-size:18px ;">hell02</p>
-                </div>
-            </div>
-            <div class="home_card">
-                <div class="home_card_item1">
-                    <img src="/static/image/wp4625805-spider-man-sad-wallpapers.jpg" alt="hello" width="100%"
-                        height="100%">
-                </div>
-                <div class="home_card_item2">
-                    <p style="font-size:18px ;">hell02</p>
-                </div>
-            </div>
-           
-        </div>
+<div class="home_main_container">
+    <% pwas.forEach(data=>{ %>
+    <div class="home_card_category">
+        <a href="" class="cat_item1"><p style="font-size: 24px;"><%= data._id.charAt(0).toUpperCase() + data._id.slice(1) %></p></a>
+        <a href=""class="cat_item2"><p style="font-size: 24px;">>></p></a>
     </div>
-</body>
+    <div class="home_card_group">
+        <% data.pwas.forEach(pwa=>{ %>
+            <a href="/detailedView?PWAId=<%=pwa._id%>">
+                <div class="home_card">
+                    <div class="home_card_item1">
+                        <img src="<%= pwa.logo.url %>" alt="hello" width="100%" height="100%">
+                    </div>
+                    <div class="home_card_item2">
+                        <p style="font-size:18px ;"><%= pwa.PWAName %></p>
+                    </div>
+                </div>
+            </a>
+            
+        <% }) %>
+        
+        
+    </div>
 
-</html>
+    <% }) %>
+
+    
+    
+</div>
+

@@ -156,3 +156,125 @@ const uploadFilesToCloud =req=>{
         });
     })
 }
+
+
+
+exports.homePage= async (req, res)=>{
+
+    try{
+        const pwas = await PWA.aggregate([
+            {
+              '$group': {
+                '_id': '$category', 
+                'pwas': {
+                  '$push': '$$ROOT'
+                }
+              }
+            }, {
+              '$project': {
+                'pwas': {
+                  '$slice': [
+                    '$pwas', 5
+                  ]
+                }
+              }
+
+            }, {
+                '$sort' :{
+                    '_id':1
+                }
+
+            }
+          ]);
+    
+    
+        res.render('home', {pwas})
+    }
+    catch(error){
+        res.status(400).json({error});
+        return;
+    }
+    
+
+}
+
+
+exports.getPWAs = async (req, res)=>{
+    const {
+        PWAName
+    }= req.body
+
+    if(!PWAName){
+        res.json({
+            pwas:[]
+        });
+
+        return;
+    }
+
+    try{
+        const pwas = await PWA.find({ PWAName: {$regex: PWAName , $options: "i"} }).limit(5);
+    
+    
+        res.json({pwas})
+    }
+    catch(error){
+        res.status(400).json({error});
+        return;
+    }
+
+}
+
+
+
+exports.detailedView = async (req, res)=>{
+    const {
+        PWAId
+    }= req.query
+
+    if(!PWAId){
+        res.redirect('/');
+        return;
+    }
+
+    try{
+        const pwa = await PWA.findOne({ _id: PWAId});
+    
+    
+        res.render('detailedView',{pwa})
+    }
+    catch(error){
+        res.redirect('/');
+        return;
+    }
+
+}
+
+
+
+exports.deletePWA = async (req, res)=>{
+    const {
+        PWAId
+    }= req.body
+
+    if(!PWAId){
+        res.status(409).json({
+            message: 'Insufficient details'
+        });
+
+        return;
+    }
+
+    try{
+        const pwa = await PWA.findOne({ _id: PWAId});
+    
+    
+        res.json({pwa})
+    }
+    catch(error){
+        res.status(400).json({error});
+        return;
+    }
+
+}
+
