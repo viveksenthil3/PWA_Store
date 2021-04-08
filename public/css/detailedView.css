@@ -40,13 +40,14 @@ a{
 }
 
 .descriptionRoot{
-    width: 30em;
+    width: 50em;
     margin: 1em 0 1em 0;
 }
 
 .description{
     color: rgb(0,0,0,0.5);
     font-size: 18px;
+    margin-left: 3em;
 }
 
 .samplePicsRoot{
@@ -69,4 +70,91 @@ a{
     display: inline-block;
 
     box-shadow: 15px 15px 10px rgb(0,0,0,0.2);
+}
+
+.reviewRoot{
+    display: flex;
+    flex-direction: column;
+}
+
+.userRating i{
+    color: grey;
+    cursor: pointer;
+}
+
+.reviewContainer{
+    display: flex;
+    heigh: 150px;
+    width: 600px;
+    margin: 1em 0;
+}
+
+.reviewUserPicContainer{
+    fle: 1;
+    width: 5.1em;
+    padding: .5em 0 0 .5em;
+    margin: 0 2.5em 0 0;
+}
+
+.reviewUserPicContainer img{
+    width: 100%;		
+    border-radius: 5em;
+    object-fit: cover;
+}
+
+.reviewContent{
+    fle: 5;
+    display: flex;
+    flex-direction: column;
+}
+
+.reviewUserName{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.reviewRating i{
+    font-size: 16px;
+    color: grey;
+}
+
+.reviewMessage{
+    color: grey;
+    font-size: 14px;
+    text-align: justify;
+}
+
+.ratingPopOuterContainer{
+    position: absolute;
+    top:0;
+    left:0;
+    
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: rgb(0, 0, 0, .4);
+}
+
+.ratingCard{
+    background-color: white;
+    border-radius: .3em;
+    padding:0em 1em 1em 1em;
+    display: flex;
+    flex-direction: column;
+    
+    width:350px;
+    height: 370px;
+    box-shadow: 20px 20px 30px rgb(0, 0, 0, 0.3);
+}
+
+.userRating2 i{
+    color: grey;
+    cursor: pointer;
+}
+
+.postRatingBtn{
+    margin: 2em 0 0 0;
 }

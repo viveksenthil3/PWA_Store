@@ -6,6 +6,7 @@
     
     <div class="row">
         <form class="savePWAInput col s42" method="POST" action="/savePWA" enctype="multipart/form-data">
+          <!-- <input type="hidden" name="pwaId" value="<%=  %>"> -->
           <div class="row">
             <input name="username" value="vivek" hidden/>
 
@@ -20,12 +21,15 @@
                     <option value="food"selected>Food</option>
                     <option value="education">Education</option>
                     <option value="sports">Sports</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="tool">Tool</option>
                 </select>
                 <label>Category</label>
             </div>
 
             <div class="input-field savePWAInput col s4 offset-s4 pull-s3">
-                <textarea name="description" value="hi" class="materialize-textarea"></textarea>
+                <!-- <textarea name="description" value="hi" class="materialize-textarea"></textarea> -->
+                <input type="text" name="description" value="description">
               <label >Description</label>
             </div>
 
@@ -58,13 +62,13 @@
          
           <div class="input-field savePWAInput col s4 offset-s4 ">
             <input class="btn green" type="submit" value="Add PWA"/>
-        </div>
+         </div>
         </form>
       </div>
 </div>
 
 <script>
-     document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems, {});
   });

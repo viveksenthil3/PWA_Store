@@ -52,10 +52,24 @@ exports.Login=(req,res)=>{
             }
             else{
                 req.session.isLogin=true;
+                req.session.email=email;
+                req.session.username=data.firstname;
                 res.status(200).redirect('/');
                 
             }    
         }); 
         
     }
+}
+
+exports.isLoggedin=(req,res)=>{
+    if(!req.session.isLogin)
+        res.status(401).send()
+    else
+        res.send()    
+}
+
+exports.logout=(req,res)=>{
+    delete req.session  
+    res.redirect('/')
 }

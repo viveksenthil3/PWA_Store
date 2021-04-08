@@ -5,9 +5,9 @@
 
 <div class="home_main_container">
     <% pwas.forEach(data=>{ %>
-    <div class="home_card_category">
+    <div id="<%=data._id%>" class="home_card_category">
         <a href="" class="cat_item1"><p style="font-size: 24px;"><%= data._id.charAt(0).toUpperCase() + data._id.slice(1) %></p></a>
-        <a href=""class="cat_item2"><p style="font-size: 24px;">>></p></a>
+        <a href=""class="cat_item2"><p style="font-size: 24px;"></p></a>
     </div>
     <div class="home_card_group">
         <% data.pwas.forEach(pwa=>{ %>

@@ -51,6 +51,7 @@ app.use(session({
   secret:process.env.SESS_SECRET,
   resave:false,
   saveUninitialized:true,
+  unset: 'destroy',
   store: sessionStore,
   cookie:{
     maxAge: 1000*60*60*2,//two hours,//process.env.SESS_LIFETIME,
@@ -86,7 +87,7 @@ app.get('/', isValidLogin,(req, res)=>{
 //     res.render('detailedView')
 // })
 
-app.get('/createPWA', (req, res)=>{
+app.get('/createPWA', isValidLogin, (req, res)=>{
   res.render('savePWA')
 })
 
