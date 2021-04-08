@@ -5,6 +5,7 @@ const { PROJECT_ROOT } = require('../..');
 const axios = require('axios');
 const formData = require('form-data');
 const cloudinary = require('cloudinary');
+const reviewModel = require('../models/review.model');
 // const FormData = require('form-data');
 const UPLOADS_PATH='./src/uploads/'
 
@@ -21,7 +22,6 @@ exports.savePWA = async (req, res)=>{
     // return
 
     const {
-        username,
         PWAName,
         category,
         description,
@@ -29,9 +29,10 @@ exports.savePWA = async (req, res)=>{
         pwaId
     }=req.body;
 
+    const username = req.session.email
 
     //Check if the request has all the required details
-    if(!(username && PWAName && category && description && link)){
+    if(!(username && PWAName && category && description!=undefined && link)){
         res.status(409).json({
             message: 'Insufficient details'
         })
@@ -60,9 +61,10 @@ exports.savePWA = async (req, res)=>{
                 })
 
             else 
-                res.status(200).json({                
-                    message: 'PWA updated successfully'
-                })
+                res.redirect('/')
+                // status(200).json({                
+                //     message: 'PWA updated successfully'
+                // })
         })
 
         deleteUploadedFiles(req);
@@ -99,7 +101,8 @@ exports.savePWA = async (req, res)=>{
             })
         }
         else
-            res.status(200).json(data);
+            res.redirect('/')
+            // status(200).json(data);
     });
 
     deleteUploadedFiles(req);
@@ -239,9 +242,16 @@ exports.detailedView = async (req, res)=>{
 
     try{
         const pwa = await PWA.findOne({ _id: PWAId});
+        let reviews = await reviewModel.find({PWAId});
+
+        reviews = await JSON.parse(JSON.stringify(reviews))
     
     
-        res.render('detailedView',{pwa})
+        res.render('detailedView',{
+            pwa,
+            reviews, 
+            isLogin: req.session.isLogin
+        })
     }
     catch(error){
         res.redirect('/');
@@ -266,15 +276,67 @@ exports.deletePWA = async (req, res)=>{
     }
 
     try{
-        const pwa = await PWA.findOne({ _id: PWAId});
+        const pwa = await PWA.deleteOne({ _id: PWAId});
     
     
-        res.json({pwa})
+        res.send()
     }
     catch(error){
         res.status(400).json({error});
         return;
     }
 
+}
+
+
+exports.addReview = async (req, res)=>{
+
+    // res.status(400).redirect(req.headers.referer)
+    // return
+
+    const {
+        rating,
+        review,
+        PWAId
+    }=req.body;
+
+    const email = req.session.email
+    const username = req.session.username
+
+    //Check if the request has all the required details
+    if(!(rating && review && PWAId )){
+        res.status(409).json({
+            message: 'Insufficient details'
+        })
+
+        return;
+    }
+
+    const Review = {
+        rating,
+        review,
+        PWAId,
+        email,
+        username
+    }
+
+
+    //Update the pwa if pwa id exists   
+    
+    const _review = new reviewModel(Review)
+
+    _review.save((error, data)=>{
+        if(error){
+            res.status(400).json({
+                error,
+                message: 'something went wrong'
+            })
+        }
+        else
+            // res.redirect('/')
+            res.status(200);
+    });
+
+    
 }
 

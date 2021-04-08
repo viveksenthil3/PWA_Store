@@ -42,7 +42,7 @@ $("#searchInput").on('keyup',async event=>{
     else
         response.pwas.map(pwa=>{
             $(".pwaSuggestionsListContainer").append(`
-                <a href="/pwaDetails/${pwa._id}">
+                <a href="/detailedView?PWAId=${pwa._id}">
                     <div class="pwaSuggestion">
                         <div class="pwaSuggestionLogo"><img src="${pwa.logo.url}" alt="logo"></div>
                         <div class="pwaSuggestionName">${pwa.PWAName.split(query).join(`<span class="queryPart">${query}</span>`).replace('</span> ', "</span>&nbsp;")}</div>
@@ -50,11 +50,29 @@ $("#searchInput").on('keyup',async event=>{
                 </a>
             `)
         })
-
-    
-    
+   
     
 })
 
 $(".pwaSuggestionsListOuterContainer").click(deactivateSearch);
+
+$(document).ready(async _=>{
+    // console.log("hi vivek")
+     $.ajax({
+        url: '/isLoggedIn',
+        method: 'POST',
+        headers:{
+            "Content-Type": "application/json"
+        }
+    }).then(_=>{
+        $("#loginRegisterBtn-top").hide()
+        $("#logoutBtn-top").show()
+    }).catch(_=>{
+        $("#loginRegisterBtn-top").show()
+        $("#logoutBtn-top").hide()
+    })
+
+    // console.log(response)
+
+})
 

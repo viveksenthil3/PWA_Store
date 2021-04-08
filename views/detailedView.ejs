@@ -4,9 +4,14 @@
     <div class="firstRow">
         <div class="detailedViewLogo"><img src="<%= pwa.logo.url %>" alt="Logo"></div>
         <div class="detailedViewNameAndReview">
-            <a href="<%= pwa.link%>">
+            
+            <% if(isLogin){ %>
+                <a href="<%= pwa.link%>">
+                    <h3 class="pwaTitle"><%= pwa.PWAName %></h3>
+                </a>
+            <%} else {%>
                 <h3 class="pwaTitle"><%= pwa.PWAName %></h3>
-            </a>
+            <%}%>
         </div>
     </div>
 
@@ -29,4 +34,96 @@
             <%})%>
         </div>
     </div>
+
+    <div class="reviewRoot">
+        <h4>Reviews</h4>
+
+        <%  if(isLogin) { %>
+            <div style="display: flex; padding: 0 0 0 6.8em;">
+        <%} else {%>	
+            <div style="display: none; padding: 0 0 0 6.8em;">
+        <%}%>
+        
+            <p style="font-weight: bold;    margin: .2em 1em 0 0;"> Rate This PWA</p>
+            <div class="userRating">
+                <i id="star-1" class="material-icons">star_rate</i>
+                <i id="star-2" class="material-icons">star_rate</i>
+                <i id="star-3" class="material-icons">star_rate</i>
+                <i id="star-4" class="material-icons">star_rate</i>
+                <i id="star-5" class="material-icons">star_rate</i>
+            </div>
+            </div>
+
+            <div style="width:100%; height: fit-content; background-color: pin; display: flex; flex-direction: column;">
+                <!-- <div class="reviewContainer">
+					<div class="reviewUserPicContainer"><img alt="" src="/static/image/user.png"></div>
+					<div class="reviewContent">
+						<div class="reviewUserName">Vivek</div>
+						<div>
+							<div class="reviewRating">
+								<i class="material-icons">star_rate</i>
+								<i class="material-icons">star_rate</i>
+								<i class="material-icons">star_rate</i>
+								<i class="material-icons">star_rate</i>
+								<i class="material-icons">star_rate</i>
+							</div>
+						</div>
+						
+						<div class="reviewMessage">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus sed dui consequat eget nunc. Auctor amet suspendisse ultricies sit ac ac. Fermentum nam at scelerisque quis viverra neque, erat enim. Sed et at consectetur pellentesque. At tellus blandit urna risus nibh fermentum. Dictumst nibh vulputate pellentesque magna.</div>
+					</div>
+				</div> -->
+
+                <% reviews.forEach(review=>{ %>
+                    <div class="reviewContainer">
+                        <div class="reviewUserPicContainer"><img alt="" src="/static/image/user.png"></div>
+                        <div class="reviewContent">
+                            <div class="reviewUserName"><%= review.username %></div>
+                            <div>
+                                <div class="reviewRating">
+                                    <% for( r=review.rating,  rt=5; rt>0; rt--, r--) {%>
+                                        <% if(r>=1) {%>
+                                            <i style="color:#ffc61a" class="material-icons">star_rate</i>
+                                        <%} else {%>
+                                            <i class="material-icons">star_rate</i>
+                                        <% } %>
+                                    <%}%>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="reviewMessage"><%= review.review%></div>
+                        </div>
+                    </div>
+                <% }) %>
+
+
+            </div>
+        	
+    </div>
 </div>
+
+
+<div style="display: none;" class="ratingPopOuterContainer">
+	<div class="ratingCard"> 
+		<h4>Review</h4>
+        <input id="pwaId" type="hidden" name="pwaId" value="<%= pwa._id %>">
+		<div style="display: flex; flex-direction:column; adding: 0 0 0 6.8em;">
+			<p style="font-weight: bold;    margin: .2em 1em 0 0;">Rate This PWA</p>
+			<div class="userRating2">
+				<i id="sstar-1" class="material-icons">star_rate</i>
+				<i id="sstar-2" class="material-icons">star_rate</i>
+				<i id="sstar-3" class="material-icons">star_rate</i>
+				<i id="sstar-4" class="material-icons">star_rate</i>
+				<i id="sstar-5" class="material-icons">star_rate</i>
+			</div>
+		</div>	
+		
+		<p style="font-weight: bold;    margin: .2em 1em 0 0;">Your Review</p>
+		<textarea id="userRatingMessage" style="height:100px"></textarea>
+		<button class="btn blue postRatingBtn">Post Rating</button>
+	</div>
+</div>
+
+
+<script src="/static/js/detailedView.js"></script>
+
